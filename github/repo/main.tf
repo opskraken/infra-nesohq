@@ -91,3 +91,49 @@ resource "github_team_membership" "maintainers" {
     ]
   }
 }
+
+resource "github_repository_file" "roadmap" {
+  repository          = github_repository.default.name
+  file                = "ROADMAP_TEMP.md"
+  content             = templatefile("${path.module}/../../templates/roadmap.md.tftpl", {
+    repo_name        = var.context.name
+    mvp_goal         = var.context.mvp_goal
+    launch_timeline  = var.context.launch_timeline
+    success_metrics  = var.context.success_metrics
+    update_date      = formatdate("YYYY-MM-DD", timestamp())
+  })
+  commit_message      = "Add ROADMAP.md for ${var.context.name} MVP"
+  commit_author       = "Terraform Bot"
+  commit_email        = "terraform@nesohq.org"
+  overwrite_on_create = true
+}
+
+resource "github_repository_file" "features" {
+  repository          = github_repository.default.name
+  file                = "FEATURES_TEMP.md"
+  content             = templatefile("${path.module}/../../templates/features.md.tftpl", {
+    repo_name        = var.context.name
+    mvp_goal         = var.context.mvp_goal
+    launch_timeline  = var.context.launch_timeline
+    success_metrics  = var.context.success_metrics
+    update_date      = formatdate("YYYY-MM-DD", timestamp())
+  })
+  commit_message      = "Add FEATURES.md for ${var.context.name} MVP"
+  commit_author       = "Terraform Bot"
+  commit_email        = "terraform@nesohq.org"
+  overwrite_on_create = true
+}
+
+resource "github_repository_file" "feature_request" {
+  repository          = github_repository.default.name
+  file                = ".github/ISSUE_TEMPLATE/feature_request.yml"
+  content             = templatefile("${path.module}/../../templates/feature_request.yml.tftpl", {
+    repo_name        = var.context.name
+    problem_example  = var.context.problem_example
+    solution_example = var.context.solution_example
+  })
+  commit_message      = "Add feature request issue template for ${var.context.name}"
+  commit_author       = "Terraform Bot"
+  commit_email        = "terraform@nesohq.org"
+  overwrite_on_create = true
+}
