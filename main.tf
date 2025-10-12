@@ -14,19 +14,19 @@ module "org" {
 }
 
 # Introduction repository
-module "intro" {
+module "funding" {
   source = "./github/repo"
   context = {
     owner            = local.org_name
-    name             = "introduction-to-nesohq"
-    visibility       = "public"
-    description      = "Introductory hub for NesoHQ, providing an overview of the organization's mission and projects, managed by Terraform for community onboarding"
+    name             = "funding"
+    visibility       = "private"
+    description      = "Funding management of NesoHQ open source organization"
     codereaders      = []
-    maintainers      = ["saadrupai"]
+    maintainers      = ["devnuckles"]
     topics           = ["terraform", "infrastructure-as-code", "iac", "github", "automation", "nesohq", "introduction", "community", "onboarding"]
     mvp_goal         = "Create a welcoming hub for new contributors"
-    launch_timeline  = "Q1 2026"
-    success_metrics  = "100+ stars, 10+ contributors"
+    launch_timeline  = "Novemeber"
+    success_metrics  = ""
     problem_example  = "New contributors lack a clear entry point to NesoHQ projects"
     solution_example = "A centralized repo with guides and project overviews"
     tech_stack       = "Markdown, GitHub Pages"
