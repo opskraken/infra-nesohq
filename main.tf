@@ -22,7 +22,7 @@ module "funding" {
     visibility       = "private"
     description      = "Funding management of NesoHQ open source organization"
     codereaders      = []
-    maintainers      = ["devnuckles"]
+    maintainers      = ["devnuckles", "ifrunruhin12"]
     topics           = ["terraform", "infrastructure-as-code", "iac", "github", "automation", "nesohq", "introduction", "community", "onboarding"]
     mvp_goal         = "Create a welcoming hub for new contributors"
     launch_timeline  = "Novemeber"
